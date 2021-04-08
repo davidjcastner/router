@@ -1,0 +1,23 @@
+{
+    "$schema": "https://json.schemastore.org/tsconfig",
+    "compilerOptions": {
+        "declaration": true,
+        "esModuleInterop": true,
+        "jsx": "react",
+        "module": "CommonJS",
+        "outDir": "./lib",
+        "resolveJsonModule": true,
+        "strict": true,
+        "target": "ES2015",
+        "types": [
+            "jest",
+            "node"
+        ]
+    },
+    "include": [
+        "src"
+    ],
+    "exclude": [
+        "node_modules"
+    ]
+}

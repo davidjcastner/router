@@ -1,0 +1,6 @@
+# npm package
+node_modules
+
+# webpack build
+dist
+lib

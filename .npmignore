@@ -1,0 +1,13 @@
+# configuration files
+.git*
+.eslintrc.json
+tsconfig.json
+webpack*
+
+# cource files
+src/**
+
+# development files
+lib/index.js.LICENSE.txt
+lib/app.d.ts
+lib/**.test.*
