@@ -1,11 +1,11 @@
 {
     "schema": "https://json.schemastore.org/package.json",
-    "name": "template-react-component-library",
-    "description": "template repository for building react component libraries",
+    "name": "router",
+    "description": "front end router for react apps",
     "author": "David Castner",
-    "version": "0.0.1",
+    "version": "1.0.0",
     "license": "Unlicense",
-    "repository": "github:davidjcastner/template-react-component-library",
+    "repository": "github:davidjcastner/router",
     "main": "./lib/index.js",
     "types": "./lib/index.d.ts",
     "scripts": {

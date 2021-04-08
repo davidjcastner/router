@@ -16,7 +16,7 @@ const configuration: Configuration = {
         filename: '[name].js',
         sourceMapFilename: '[name].map.js',
         library: {
-            name: 'LibraryName',
+            name: 'Router',
             type: 'umd',
         },
         clean: true,
