@@ -6,7 +6,9 @@ export const getPath = (
 
 
 /** utility function for getting hash of current route */
-export const getHash = (hash: string = window.location.hash): string => {
+export const getHash = (
+    hash: string = window.location.hash
+): string => {
     const decodedHash = decodeURI(hash);
     return decodedHash.length > 0 && decodedHash[1] === '#'
         ? decodedHash.slice(1)
