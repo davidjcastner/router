@@ -83,7 +83,10 @@
             "error",
             "consistent"
         ],
-        "function-paren-newline": "error",
+        "function-paren-newline": [
+            "error",
+            "multiline-arguments"
+        ],
         "generator-star-spacing": "error",
         "getter-return": "error",
         "grouped-accessor-pairs": "error",
@@ -123,7 +126,7 @@
             }
         ],
         "max-lines-per-function": [
-            "error",
+            "off",
             {
                 "max": 50,
                 "skipBlankLines": true,
@@ -570,7 +573,10 @@
         "@typescript-eslint/require-await": "error",
         "@typescript-eslint/return-await": "error",
         "@typescript-eslint/semi": "error",
-        "@typescript-eslint/space-before-function-paren": "error",
+        "@typescript-eslint/space-before-function-paren": [
+            "error",
+            "never"
+        ],
         "@typescript-eslint/space-infix-ops": "error",
         "react/no-children-prop": "error",
         "react/no-danger-with-children": "error",
