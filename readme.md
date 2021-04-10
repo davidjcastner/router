@@ -20,6 +20,8 @@ const NotFoundPage: FunctionComponent = () => <div />;
 const SignInForm: FunctionComponent = () => <div />;
 
 // all route definitions
+// TIP: use an enum for route names
+// routes default to isPublic: false
 const routes: Array<RouteDefinition> = [
     {
         route: 'home',
@@ -40,13 +42,15 @@ const routes: Array<RouteDefinition> = [
     },
 ];
 
-// App Root Component
-const App: FunctionComponent = () => {
+// App - root Component
+// render or export App component
+export const App: FunctionComponent = () => {
     // use authentication method to get a user
+    // user/signin is optional (leave all routes public)
     const user = null;
 
     // wrap RoutePage with RouteRegistry
-    // can add layout here
+    // can add layout here or on each page
     return <RouteRegistry routes={routes} >
         <RoutePage
             notFound={NotFoundPage}
@@ -54,8 +58,6 @@ const App: FunctionComponent = () => {
             isSignedIn={Boolean(user)} />
     </RouteRegistry>;
 };
-
-// render or export App component
 ```
 
 ## Types
