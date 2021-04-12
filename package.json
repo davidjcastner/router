@@ -1,6 +1,6 @@
 {
     "schema": "https://json.schemastore.org/package.json",
-    "name": "router",
+    "name": "@davidjcastner/router",
     "description": "front end router for react apps",
     "author": "David Castner",
     "version": "1.0.0",
