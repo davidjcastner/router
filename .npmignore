@@ -11,3 +11,4 @@ src/**
 lib/index.js.LICENSE.txt
 lib/app.d.ts
 lib/**.test.*
+lib/**/**.test.*

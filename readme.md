@@ -2,6 +2,21 @@
 
 front end router for react apps
 
+- [Router](#router)
+  - [How to use](#how-to-use)
+  - [Types](#types)
+    - [RouteDefinition](#routedefinition)
+    - [RouteInformation](#routeinformation)
+    - [RouteState](#routestate)
+    - [LocationContext](#locationcontext)
+  - [Components](#components)
+    - [RouteRegistry](#routeregistry)
+    - [RoutePage](#routepage)
+    - [Link](#link)
+  - [Context](#context)
+    - [useLocation](#uselocation)
+  - [Utility Functions](#utility-functions)
+
 ## How to use
 
 ```ts
@@ -62,7 +77,7 @@ export const App: FunctionComponent = () => {
 
 ## Types
 
-RouteDefinition
+### RouteDefinition
 
 ```ts
 /** information required for registering a route */
@@ -85,7 +100,7 @@ export type RouteDefinition = {
 };
 ```
 
-RouteInformation
+### RouteInformation
 
 ```ts
 /** information from parsed url */
@@ -105,27 +120,140 @@ export type RouteInformation = {
 };
 ```
 
-RouteState
+### RouteState
 
 ```ts
 /** values available in router/location context */
 export type RouteState = Required<RouteDefinition> & Omit<RouteInformation, 'route'>;
 ```
 
+### LocationContext
+
+```ts
+/** values available in router/location context */
+export type LocationContext = {
+
+    /** internal name used for router */
+    route: string;
+
+    /** url path segments for route */
+    path: Array<string>;
+
+    /** tokens on end of path */
+    tokens: Array<string>;
+
+    /** key value pairs from query string */
+    query: Record<string, string>;
+
+    /** string appended by hash */
+    hash: string;
+
+    /** whether or not a user must be logged in to see page - default: false */
+    isPublic: boolean;
+
+    /** react component to render as route page */
+    component: FunctionComponent;
+
+    /** utility function for constructing a relative href based on route info */
+    pathForRoute: (info: Partial<RouteInformation>) => string;
+
+    /** utility function for directing to a relative href based on route info */
+    goToRoute: (info: Partial<RouteInformation>) => void;
+};
+```
+
 ## Components
 
-RouteRegistry
+### RouteRegistry
 
-RoutePage
+Wrap application with RouteRegistry to provide all children with location context.
+When using authentication context, the RouteRegistry should be place inside of the authentication context.
 
-Link
+```ts
+export const RouteRegistry: FunctionComponent<{
+    routes: Array<RouteDefinition>;
+}>;
+```
+
+### RoutePage
+
+RoutePage renders the component that was registered for the current route.
+RoutePage must be within a RouteRegistry component.
+If the current route, does not match a registered definition, then the notFound component is rendered.
+If the route is private and isSignedIn is false, then the signIn component is rendered.
+
+```ts
+export const RoutePage: FunctionComponent<{
+    notFound?: FunctionComponent;
+    signIn?: FunctionComponent;
+    isSignedIn?: boolean;
+}>;
+```
+
+### Link
+
+Link adds a link to the page with the correct relative href for the route specified.
+RoutePage must be within a RouteRegistry component.
+Additional css classes can be added or an action to complete after being clicked.
+
+```ts
+export const Link: FunctionComponent<{
+    route: string;
+    tokens?: Array<string>;
+    query?: Record<string, string>;
+    hash?: string;
+    className?: string;
+    afterClick?: (() => void) | null;
+}>;
+```
 
 ## Context
 
-useLocation
+### useLocation
+
+useLocation provides information about the current route to any child component of a RouteRegistry.
+See LocationContext for details.
 
 ## Utility Functions
 
-pathFor
+```ts
+/** utility function for getting path of current route */
+export const getPath = (
+    pathname: string = window.location.pathname
+) => Array<string>;
 
-goTo
+/** utility function for getting hash of current route */
+export const getHash = (
+    hash: string = window.location.hash
+) => string;
+
+
+/** utility function for getting query of current route */
+export const getQuery = (
+    search: string = window.location.search
+) => Record<string, string>;
+
+
+/** constructs the relative href for the given parameters */
+export const pathFor = ({
+    path = [],
+    query = {},
+    hash = '',
+}: {
+    path?: Array<string>;
+    query?: Record<string, string>;
+    hash?: string;
+}) => string;
+
+
+/** goes to the relative page */
+export const goTo = ({
+    path = [],
+    query = {},
+    hash = '',
+}: {
+    path?: Array<string>;
+    query?: Record<string, string>;
+    hash?: string;
+}) => void;
+```
