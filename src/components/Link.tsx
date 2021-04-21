@@ -1,4 +1,4 @@
-import type { FunctionComponent } from 'react';
+import type { FC } from 'react';
 import React from 'react';
 import { useLocation } from '../context/location';
 
@@ -8,7 +8,7 @@ import { useLocation } from '../context/location';
   * for registered routes only, not path literals,
   * must be within a router component
   */
-export const Link: FunctionComponent<{
+export const Link: FC<{
     route: string;
     tokens?: Array<string>;
     query?: Record<string, string>;

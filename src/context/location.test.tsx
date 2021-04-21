@@ -4,7 +4,7 @@
 // see ../components/Link.test.tsx
 // and ../components/RoutePage.test.tsx
 
-import type { FunctionComponent } from 'react';
+import type { FC } from 'react';
 import { render } from '@testing-library/react';
 import React, { Fragment } from 'react';
 
@@ -26,13 +26,13 @@ describe('useLocation', () => {
                 isPublic: true,
             },
         ];
-        const Ctx: FunctionComponent = () => {
+        const Ctx: FC = () => {
             const { route } = useLocation();
             return <div>
                 {route}
             </div>;
         };
-        const App: FunctionComponent = () => <RouteRegistry routes={routes} >
+        const App: FC = () => <RouteRegistry routes={routes} >
             <Ctx />
         </RouteRegistry>;
         const { getByText } = render(<App />);

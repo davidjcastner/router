@@ -1,12 +1,12 @@
-import type { FunctionComponent } from 'react';
+import type { FC } from 'react';
 import React, { Fragment } from 'react';
 import { useLocation } from '../context/location';
 
 
 /** renders the page component associated with the current route */
-export const RoutePage: FunctionComponent<{
-    notFound?: FunctionComponent;
-    signIn?: FunctionComponent;
+export const RoutePage: FC<{
+    notFound?: FC;
+    signIn?: FC;
     isSignedIn?: boolean;
 }> = ({
     notFound = Fragment,

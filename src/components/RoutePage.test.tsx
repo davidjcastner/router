@@ -1,4 +1,4 @@
-import type { FunctionComponent } from 'react';
+import type { FC } from 'react';
 import { render } from '@testing-library/react';
 import React from 'react';
 
@@ -11,9 +11,9 @@ import {
 
 
 // components for testing
-const HomePage: FunctionComponent = () => <div>Home</div>;
-const NotFoundPage: FunctionComponent = () => <div>Missing</div>;
-const SignIn: FunctionComponent = () => <div>SignIn</div>;
+const HomePage: FC = () => <div>Home</div>;
+const NotFoundPage: FC = () => <div>Missing</div>;
+const SignIn: FC = () => <div>SignIn</div>;
 
 describe('RoutePage', () => {
     it('should render a root page', () => {
@@ -25,7 +25,7 @@ describe('RoutePage', () => {
                 isPublic: true,
             },
         ];
-        const App: FunctionComponent = () => <RouteRegistry routes={routes} >
+        const App: FC = () => <RouteRegistry routes={routes} >
             <RoutePage
                 notFound={NotFoundPage}
                 signIn={SignIn}
@@ -46,7 +46,7 @@ describe('RoutePage', () => {
                 isPublic: true,
             },
         ];
-        const App: FunctionComponent = () => <RouteRegistry routes={routes} >
+        const App: FC = () => <RouteRegistry routes={routes} >
             <RoutePage
                 notFound={NotFoundPage}
                 signIn={SignIn}
@@ -66,7 +66,7 @@ describe('RoutePage', () => {
                 path: [],
             },
         ];
-        const App: FunctionComponent = () => <RouteRegistry routes={routes} >
+        const App: FC = () => <RouteRegistry routes={routes} >
             <RoutePage
                 notFound={NotFoundPage}
                 signIn={SignIn}
@@ -87,7 +87,7 @@ describe('RoutePage', () => {
                 isPublic: true,
             },
         ];
-        const App: FunctionComponent = () => <RouteRegistry routes={routes} >
+        const App: FC = () => <RouteRegistry routes={routes} >
             <RoutePage
                 notFound={NotFoundPage}
                 signIn={SignIn}

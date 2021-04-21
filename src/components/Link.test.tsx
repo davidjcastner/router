@@ -1,4 +1,4 @@
-import type { FunctionComponent } from 'react';
+import type { FC } from 'react';
 import { render } from '@testing-library/react';
 import React, { Fragment } from 'react';
 
@@ -21,7 +21,7 @@ describe('Link', () => {
                 tokenCount: 2,
             },
         ];
-        const App: FunctionComponent = () => <RouteRegistry routes={routes} >
+        const App: FC = () => <RouteRegistry routes={routes} >
             <Link
                 route='home'
                 tokens={['1', '2']}
@@ -45,7 +45,7 @@ describe('Link', () => {
                 tokenCount: 2,
             },
         ];
-        const App: FunctionComponent = () => <RouteRegistry routes={routes} >
+        const App: FC = () => <RouteRegistry routes={routes} >
             <Link
                 route='home'
                 tokens={['1', '2']}
@@ -68,7 +68,7 @@ describe('Link', () => {
                 tokenCount: 2,
             },
         ];
-        const App: FunctionComponent = () => <RouteRegistry routes={routes} >
+        const App: FC = () => <RouteRegistry routes={routes} >
             <Link
                 route='home'>
                 child_comps

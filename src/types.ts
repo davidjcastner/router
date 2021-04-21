@@ -1,4 +1,4 @@
-import type { FunctionComponent } from 'react';
+import type { FC } from 'react';
 
 
 /** information required for registering a route */
@@ -8,7 +8,7 @@ export type RouteDefinition = {
     route: string;
 
     /** react component to render as route page */
-    component: FunctionComponent;
+    component: FC;
 
     /** url path segments for route */
     path: Array<string>;
@@ -64,7 +64,7 @@ export type LocationContext = {
     isPublic: boolean;
 
     /** react component to render as route page */
-    component: FunctionComponent;
+    component: FC;
 
     /** utility function for constructing a relative href based on route info */
     pathForRoute: (info: Partial<RouteInformation>) => string;
