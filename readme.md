@@ -1,6 +1,6 @@
 # Router
 
-front end router for react apps
+NPM Router package with react components for single page apps
 
 - [Router](#router)
   - [How to use](#how-to-use)
